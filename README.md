@@ -13,7 +13,7 @@ Have fun and show your score in the comments of ldjam.com page!
 
 
 
-# TOOlS:
+# TOOLS:
 
 - Godot 4.4
 - Aseprite for sprites
