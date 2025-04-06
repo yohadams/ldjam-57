@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfrp3esrym75r"]
+
+[ext_resource type="Texture2D" uid="uid://bpcumvqok7efg" path="res://sprites/wall_segments.png" id="1_a2wng"]
+[ext_resource type="Shader" uid="uid://dndwisumh7ynt" path="res://shaders/wall_sections.gdshader" id="1_xll5x"]
+[ext_resource type="Script" uid="uid://dnewmhhfwim40" path="res://scripts/wall_sections.gd" id="2_3bgb0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur7we"]
+shader = ExtResource("1_xll5x")
+shader_parameter/delta = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bgb0"]
+atlas = ExtResource("1_a2wng")
+region = Rect2(0, 912, 640, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xll5x"]
+atlas = ExtResource("1_a2wng")
+region = Rect2(0, 608, 640, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7we"]
+atlas = ExtResource("1_a2wng")
+region = Rect2(0, 304, 640, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7b1v"]
+atlas = ExtResource("1_a2wng")
+region = Rect2(0, 0, 640, 288)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcpji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bgb0")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xll5x")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7we")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7b1v")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}]
+
+[node name="WallSection" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_ur7we")
+sprite_frames = SubResource("SpriteFrames_vcpji")
+animation = &"1"
+script = ExtResource("2_3bgb0")
+
+[node name="SpawnerL" type="Node2D" parent="."]
+position = Vector2(166, 0)
+
+[node name="SpawnerM" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="SpawnerR" type="Node2D" parent="."]
+position = Vector2(-164, 0)

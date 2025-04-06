@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ujy3501feeng"]
+
+[ext_resource type="FontFile" uid="uid://1pdaoro8q7c3" path="res://fonts/newyorkescapeleft.ttf" id="1_v4imr"]
+
+[resource]
+default_font = ExtResource("1_v4imr")

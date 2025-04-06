@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=3 uid="uid://cml0dbh86du5p"]
+
+[ext_resource type="Texture2D" uid="uid://ecw0lowjcyk3" path="res://sprites/menu_background.png" id="1_j0t7f"]
+[ext_resource type="Script" uid="uid://jf6eev7yydul" path="res://scripts/menu.gd" id="1_pbjm4"]
+[ext_resource type="FontFile" uid="uid://1pdaoro8q7c3" path="res://fonts/newyorkescapeleft.ttf" id="2_g18jx"]
+[ext_resource type="Theme" uid="uid://ujy3501feeng" path="res://menu/menu_theme.tres" id="3_6fswf"]
+[ext_resource type="Shader" uid="uid://bykhqd7swfqtw" path="res://shaders/label_hell_shader.gdshader" id="3_6nwqt"]
+[ext_resource type="Shader" uid="uid://bbwmahn1iqeqq" path="res://shaders/label_depths.gdshader" id="4_svuvw"]
+[ext_resource type="Texture2D" uid="uid://capotvf0cw6ij" path="res://sprites/buttons/normal.png" id="6_s4hbh"]
+[ext_resource type="Texture2D" uid="uid://w3h50d7rttfk" path="res://sprites/buttons/pressed.png" id="7_6fswf"]
+[ext_resource type="Texture2D" uid="uid://dvsrjjleym44g" path="res://sprites/buttons/shadow-hover.png" id="8_s4hbh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_juveg"]
+shader = ExtResource("4_svuvw")
+shader_parameter/time = 0.0
+shader_parameter/darkness = 0.5
+shader_parameter/wave_strength = 5.0
+shader_parameter/wave_speed = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbjm4"]
+shader = ExtResource("3_6nwqt")
+shader_parameter/time = 0.0
+shader_parameter/flame_intensity = 1.0
+shader_parameter/flame_speed = 3.0
+shader_parameter/flame_scale = 1.0
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbjm4")
+
+[node name="MenuBackground" type="Sprite2D" parent="."]
+position = Vector2(324, 576)
+texture = ExtResource("1_j0t7f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 646.0
+offset_bottom = 313.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_6fswf")
+theme_override_colors/font_color = Color(0.951582, 0, 0.13557, 1)
+theme_override_font_sizes/font_size = 52
+text = "ESCAPE FROM THE"
+horizontal_alignment = 1
+
+[node name="Depths" type="Label" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_juveg")
+layout_mode = 2
+theme = ExtResource("3_6fswf")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "DEPTHS"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_6fswf")
+theme_override_colors/font_color = Color(0.952941, 0, 0.137255, 1)
+theme_override_font_sizes/font_size = 80
+text = "OF "
+horizontal_alignment = 1
+
+[node name="HELL" type="Label" parent="VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_pbjm4")
+layout_mode = 2
+theme = ExtResource("3_6fswf")
+theme_override_font_sizes/font_size = 80
+text = "HELL"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 336.0
+offset_right = 304.0
+offset_bottom = 408.0
+texture_normal = ExtResource("6_s4hbh")
+texture_pressed = ExtResource("7_6fswf")
+texture_hover = ExtResource("8_s4hbh")
+
+[node name="Label" type="Label" parent="PlayButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_g18jx")
+theme_override_font_sizes/font_size = 24
+text = "Play
+"
+horizontal_alignment = 1
+
+[node name="Config" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 432.0
+offset_right = 304.0
+offset_bottom = 504.0
+texture_normal = ExtResource("6_s4hbh")
+texture_pressed = ExtResource("7_6fswf")
+texture_hover = ExtResource("8_s4hbh")
+
+[node name="Label" type="Label" parent="Config"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_g18jx")
+theme_override_font_sizes/font_size = 24
+text = "Configuration
+"
+horizontal_alignment = 1
+
+[node name="How" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 524.0
+offset_right = 304.0
+offset_bottom = 596.0
+texture_normal = ExtResource("6_s4hbh")
+texture_pressed = ExtResource("7_6fswf")
+texture_hover = ExtResource("8_s4hbh")
+
+[node name="Label" type="Label" parent="How"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_g18jx")
+theme_override_font_sizes/font_size = 24
+text = "How to play"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Config" to="." method="_on_config_pressed"]
+[connection signal="pressed" from="How" to="." method="_on_how_pressed"]

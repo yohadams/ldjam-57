@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4gb7dsxrnudj"]
+
+[ext_resource type="Texture2D" uid="uid://b4p3drro8c4gx" path="res://sprites/obsticles/rock.png" id="1_d1h5y"]
+[ext_resource type="Script" uid="uid://yvg7ul0x5gmn" path="res://scripts/falling_obsticle.gd" id="1_egf7d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egf7d"]
+radius = 75.0067
+
+[node name="FallingRock" type="RigidBody2D" groups=["falling"]]
+visibility_layer = 2
+z_index = 1
+collision_mask = 0
+gravity_scale = 0.5
+script = ExtResource("1_egf7d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d1h5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -57)
+shape = SubResource("CircleShape2D_egf7d")

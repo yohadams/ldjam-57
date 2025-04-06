@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqtctwq3d56px"]
+
+[ext_resource type="Script" uid="uid://yvg7ul0x5gmn" path="res://scripts/falling_obsticle.gd" id="1_sawaj"]
+[ext_resource type="Texture2D" uid="uid://b04owjjvl8an0" path="res://sprites/obsticles/barrel.png" id="1_ulaxn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sawaj"]
+radius = 63.0
+height = 170.0
+
+[node name="FallingBarrel" type="RigidBody2D" groups=["falling"]]
+visibility_layer = 2
+z_index = 1
+collision_mask = 0
+gravity_scale = 0.5
+script = ExtResource("1_sawaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ulaxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -44)
+shape = SubResource("CapsuleShape2D_sawaj")

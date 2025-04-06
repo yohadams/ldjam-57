@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://br05r675j4a77"]
+
+[ext_resource type="Script" uid="uid://bbrs1p1rhftkw" path="res://scripts/game_ui.gd" id="1_gcrtl"]
+[ext_resource type="Texture2D" uid="uid://dqkb2102g37gd" path="res://sprites/speedbar_under.png" id="2_crvfg"]
+[ext_resource type="Theme" uid="uid://ujy3501feeng" path="res://menu/menu_theme.tres" id="2_vp8la"]
+[ext_resource type="Texture2D" uid="uid://cl5p7vkbpo4r1" path="res://sprites/speedbar_proggres.png" id="4_hwyhk"]
+
+[sub_resource type="Theme" id="Theme_gkpjg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcrtl"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_gcrtl")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 2
+offset_left = 1.0
+offset_right = 649.0
+offset_bottom = 43.0
+theme = SubResource("Theme_gkpjg")
+theme_type_variation = &"ui"
+theme_override_styles/panel = SubResource("StyleBoxFlat_gcrtl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 0.93
+offset_left = 9.0
+offset_right = -10.0
+offset_bottom = 0.00999832
+alignment = 1
+
+[node name="Left" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_vp8la")
+theme_override_font_sizes/font_size = 24
+text = "LEFT HAND"
+
+[node name="Score" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_vp8la")
+theme_override_font_sizes/font_size = 24
+text = "1000000"
+
+[node name="Right" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_vp8la")
+theme_override_font_sizes/font_size = 24
+text = "RIGHT HAND"
+
+[node name="SpeedBar" type="TextureProgressBar" parent="."]
+offset_left = 96.0
+offset_top = 1104.0
+offset_right = 560.0
+offset_bottom = 1144.0
+max_value = 20.0
+texture_under = ExtResource("2_crvfg")
+texture_progress = ExtResource("4_hwyhk")
+texture_progress_offset = Vector2(16, 8)

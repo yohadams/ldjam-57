@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=3 uid="uid://bbi7hlbnvxilf"]
+
+[ext_resource type="Script" uid="uid://cgfei1he7u6fe" path="res://scripts/player.gd" id="1_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://bepnbyegcbhmq" path="res://sprites/player/player_fall.png" id="2_rfe5m"]
+[ext_resource type="Texture2D" uid="uid://brs1n6qgocyj8" path="res://sprites/player/player_left.png" id="3_qly61"]
+[ext_resource type="Texture2D" uid="uid://dacihku7l06f" path="res://sprites/player/player_right.png" id="4_qsoyl"]
+[ext_resource type="AudioStream" uid="uid://cgq7rx00lat1h" path="res://sounds/bez nazwy.wav" id="5_qly61"]
+[ext_resource type="AudioStream" uid="uid://cnma74gqynb8e" path="res://sounds/ableton_loop_!.ogg" id="6_6nm46"]
+[ext_resource type="Theme" uid="uid://ujy3501feeng" path="res://menu/menu_theme.tres" id="7_6nm46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_merdl"]
+size = Vector2(66, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nm46"]
+atlas = ExtResource("2_rfe5m")
+region = Rect2(0, 0, 128, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i623q"]
+atlas = ExtResource("3_qly61")
+region = Rect2(0, 0, 128, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef06p"]
+atlas = ExtResource("4_qsoyl")
+region = Rect2(0, 0, 128, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfe5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nm46")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i623q")
+}],
+"loop": true,
+"name": &"left_hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef06p")
+}],
+"loop": true,
+"name": &"right_hand",
+"speed": 5.0
+}]
+
+[node name="Player" type="Area2D" groups=["player"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_b0kkn")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_merdl")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Collision"]
+position = Vector2(2, 0.5)
+sprite_frames = SubResource("SpriteFrames_rfe5m")
+animation = &"fall"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -424)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="SpawnerL" type="Node2D" parent="."]
+position = Vector2(-180, -1600)
+
+[node name="SpawnerM" type="Node2D" parent="."]
+position = Vector2(0, -1600)
+
+[node name="SpawnerR" type="Node2D" parent="."]
+position = Vector2(180, -1600)
+
+[node name="Bum" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qly61")
+volume_db = -80.0
+bus = &"SFX"
+area_mask = 2
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6nm46")
+autoplay = true
+parameters/looping = true
+
+[node name="DeadPanel" type="Panel" parent="."]
+visible = false
+offset_left = -324.0
+offset_top = -701.0
+offset_right = 323.0
+offset_bottom = -487.0
+
+[node name="Label" type="Label" parent="DeadPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -323.0
+offset_top = 22.0
+offset_right = 326.0
+offset_bottom = 51.0
+grow_horizontal = 2
+rotation = 0.00225443
+theme = ExtResource("7_6nm46")
+theme_override_font_sizes/font_size = 24
+text = "Score"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="DeadPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -323.0
+offset_top = 59.0
+offset_right = 326.0
+offset_bottom = 88.0
+grow_horizontal = 2
+rotation = 0.00225443
+theme = ExtResource("7_6nm46")
+theme_override_font_sizes/font_size = 24
+text = "1000000000"
+horizontal_alignment = 1
+
+[node name="Score2" type="Label" parent="DeadPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -322.0
+offset_top = 122.0
+offset_right = 327.0
+offset_bottom = 151.0
+grow_horizontal = 2
+rotation = 0.00225443
+theme = ExtResource("7_6nm46")
+theme_override_font_sizes/font_size = 24
+text = "Press R to reload or M to go back to main Menu"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr6icoq5ca8bk"]
+
+[ext_resource type="Script" uid="uid://yvg7ul0x5gmn" path="res://scripts/falling_obsticle.gd" id="1_86eri"]
+[ext_resource type="Texture2D" uid="uid://b4py7pde8ejef" path="res://sprites/obsticles/bible.png" id="2_86eri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p20l"]
+size = Vector2(56, 64)
+
+[node name="FallingBible" type="RigidBody2D" groups=["falling"]]
+visibility_layer = 2
+z_index = 1
+collision_mask = 0
+gravity_scale = 0.5
+script = ExtResource("1_86eri")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_86eri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -72)
+shape = SubResource("RectangleShape2D_6p20l")

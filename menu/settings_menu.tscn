@@ -1,0 +1,217 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3j2exuejonef"]
+
+[ext_resource type="Script" uid="uid://colh3xcb40vas" path="res://scripts/settings_menu.gd" id="1_gqi7j"]
+[ext_resource type="Theme" uid="uid://ujy3501feeng" path="res://menu/menu_theme.tres" id="1_s3c1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im6tu"]
+bg_color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3c1e"]
+bg_color = Color(2.98411e-06, 0.46826, 0.650164, 1)
+border_color = Color(0.514552, 0.851879, 1, 1)
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s3c1e"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gqi7j")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 648.0
+offset_bottom = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_im6tu")
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 640.0
+offset_bottom = 392.0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 80
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 60
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Music" type="VBoxContainer" parent="Panel/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2/HBoxContainer/Music"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 30
+text = "Music
+"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/HBoxContainer2/HBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_s3c1e")
+text = "Disabled
+"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer2/HBoxContainer/Music"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2/HBoxContainer/Music/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+text = "Level"
+
+[node name="HSlider" type="HSlider" parent="Panel/HBoxContainer2/HBoxContainer/Music/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+tooltip_text = "Music level"
+theme = ExtResource("1_s3c1e")
+theme_override_styles/slider = SubResource("StyleBoxFlat_s3c1e")
+
+[node name="SFX" type="VBoxContainer" parent="Panel/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2/HBoxContainer/SFX"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 30
+text = "SFX
+"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/HBoxContainer2/HBoxContainer/SFX"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("1_s3c1e")
+text = "Disabled"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer2/HBoxContainer/SFX"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2/HBoxContainer/SFX/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+text = "Level"
+
+[node name="HSlider" type="HSlider" parent="Panel/HBoxContainer2/HBoxContainer/SFX/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+tooltip_text = "Music level"
+theme = ExtResource("1_s3c1e")
+theme_override_styles/slider = SubResource("StyleBoxFlat_s3c1e")
+
+[node name="Keys" type="Label" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 60
+text = "Key mappings"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="remap_left" type="Button" parent="Panel/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+text = "Remap left hand button current:   A"
+icon = SubResource("ViewportTexture_s3c1e")
+flat = true
+
+[node name="remap_right" type="Button" parent="Panel/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+text = "Remap right hand button current:   D"
+icon = SubResource("ViewportTexture_s3c1e")
+flat = true
+
+[node name="remap_hop_left" type="Button" parent="Panel/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+text = "Remap hop right  button current:   Arrow Left"
+icon = SubResource("ViewportTexture_s3c1e")
+flat = true
+
+[node name="remap_hop_right" type="Button" parent="Panel/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_s3c1e")
+text = "Remap hop right  button current:   Arrow Right"
+icon = SubResource("ViewportTexture_s3c1e")
+flat = true
+
+[node name="Go back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 1072.0
+offset_right = 624.0
+offset_bottom = 1136.0
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 32
+text = "Go back"
+
+[node name="Dialog" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 360.0
+offset_right = 648.0
+offset_bottom = 896.0
+
+[node name="Label" type="Label" parent="Dialog"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 536.0
+theme = ExtResource("1_s3c1e")
+theme_override_font_sizes/font_size = 80
+text = "Now press keyboard key you want"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="toggled" from="Panel/HBoxContainer2/HBoxContainer/Music/CheckBox" to="." method="_on_music_disabled_toggle"]
+[connection signal="value_changed" from="Panel/HBoxContainer2/HBoxContainer/Music/HBoxContainer/HSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="toggled" from="Panel/HBoxContainer2/HBoxContainer/SFX/CheckBox" to="." method="_on_sfx_toggle_disabled"]
+[connection signal="value_changed" from="Panel/HBoxContainer2/HBoxContainer/SFX/HBoxContainer/HSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="pressed" from="Panel/HBoxContainer2/VBoxContainer/remap_left" to="." method="_on_remap_left_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer2/VBoxContainer/remap_right" to="." method="_on_remap_right_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer2/VBoxContainer/remap_hop_left" to="." method="_on_remap_hop_left_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer2/VBoxContainer/remap_hop_right" to="." method="_on_remap_hop_right_pressed"]
+[connection signal="pressed" from="Go back" to="." method="_on_go_back_pressed"]

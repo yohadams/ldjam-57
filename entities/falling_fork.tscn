@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddaxkwbahttv1"]
+
+[ext_resource type="Script" uid="uid://yvg7ul0x5gmn" path="res://scripts/falling_obsticle.gd" id="1_s1yu5"]
+[ext_resource type="Texture2D" uid="uid://k3pyvfb8rf11" path="res://sprites/obsticles/fork.png" id="2_s1yu5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sawaj"]
+radius = 29.0
+height = 244.0
+
+[node name="FallingFork" type="RigidBody2D" groups=["falling"]]
+visibility_layer = 2
+z_index = 1
+collision_mask = 0
+gravity_scale = 0.5
+script = ExtResource("1_s1yu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s1yu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -37)
+shape = SubResource("CapsuleShape2D_sawaj")

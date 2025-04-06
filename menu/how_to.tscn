@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://drhgetyidbsoy"]
+
+[ext_resource type="Theme" uid="uid://ujy3501feeng" path="res://menu/menu_theme.tres" id="1_aw5ce"]
+[ext_resource type="Script" uid="uid://dcyn5ctbffaev" path="res://scripts/how_to.gd" id="1_qhgto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhgto"]
+bg_color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_qhgto"]
+
+[node name="HowTo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qhgto")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 648.0
+offset_bottom = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhgto")
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 72.0
+offset_right = 641.0
+offset_bottom = 392.0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_aw5ce")
+theme_override_font_sizes/font_size = 75
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_aw5ce")
+theme_override_fonts/font = SubResource("SystemFont_qhgto")
+theme_override_font_sizes/font_size = 36
+text = "Use the arrow keys to move left and right.
+
+Press A or D to reach up.
+(At the top, yellow signals show which hand to use.)
+
+Avoid everything that’s falling and try to get the highest score possible!
+
+The bar at the bottom shows your speed — the faster you go, the more points you earn."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Go back" type="Button" parent="."]
+offset_left = 368.0
+offset_top = 1072.0
+offset_right = 624.0
+offset_bottom = 1136.0
+theme = ExtResource("1_aw5ce")
+theme_override_font_sizes/font_size = 32
+text = "Go back"
+
+[connection signal="pressed" from="Go back" to="." method="_on_go_back_pressed"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq36gfm1arvsu"]
+
+[ext_resource type="Script" uid="uid://yvg7ul0x5gmn" path="res://scripts/falling_obsticle.gd" id="1_143cx"]
+[ext_resource type="Texture2D" uid="uid://vpsm1t6aev5r" path="res://sprites/obsticles/anvil.png" id="2_143cx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddmpa"]
+size = Vector2(128, 88)
+
+[node name="FallingBarrel" type="RigidBody2D" groups=["falling"]]
+visibility_layer = 2
+z_index = 1
+collision_mask = 0
+gravity_scale = 0.5
+script = ExtResource("1_143cx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_143cx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -76)
+shape = SubResource("RectangleShape2D_ddmpa")
